@@ -1,0 +1,17 @@
+{
+  "name": "liri",
+  "version": "1.0.0",
+  "description": "liri-bot assignment",
+  "main": "keys.js",
+  "dependencies": {
+    "node-spotify-api": "^1.0.7",
+    "request": "^2.83.0",
+    "twitter": "^1.7.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Brandon Lawson",
+  "license": "ISC"
+}
