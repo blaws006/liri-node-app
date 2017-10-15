@@ -13,20 +13,20 @@ switch (params[0]) {
     twitterMe();
     break;
   case "spotify-this-song":
-    if (params[1]){
+    if (params[1]) {
       spotifyMe()
     } else {
-      params[1] = "Meditate"; 
+      params[1] = "Meditate";
       spotifyMe();
     }
     break;
   case "movie-this":
-  if (params[1]){
-    movieInfo();
-  } else {
-    params[1] = "Mr. Nobody"; 
-    movieInfo();
-  }
+    if (params[1]) {
+      movieInfo();
+    } else {
+      params[1] = "Mr. Nobody";
+      movieInfo();
+    }
     break;
 };
 
