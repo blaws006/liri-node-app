@@ -19,7 +19,7 @@ client.get('/statuses/user_timeline/', params , function(error, tweets, response
 
   var song = process.argv.slice(2);
 
-  spotify.search({ type: "track", query: song[1]}, function(err, data) {
+  spotify.search({ type: "track", query: song}, function(err, data) {
     if (err){
       console.log( err );
       return;
