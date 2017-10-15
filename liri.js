@@ -28,6 +28,9 @@ switch (params[0]) {
       movieInfo();
     }
     break;
+  case "do-what-it-says":
+    itSays();
+
 };
 
 // console.log(keys);
@@ -84,3 +87,18 @@ function movieInfo() {
   });
 };
 
+function itSays() {
+  fs.readFile("random.txt", "utf8", function (err, data) {
+    if (err) {
+      console.log(err);
+    }
+    var dataArr = data.split(",");
+
+    for (var i = 0; i < dataArr.length; i++) {
+      params[1] = dataArr[1];
+
+    }
+    spotifyMe();
+  });
+
+}
