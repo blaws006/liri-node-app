@@ -5,30 +5,30 @@ var request = require('request');
 var fs = require("fs");
 var keys = require("./keys.js");
 
-
-var command = process.argv[2];
+//Global variable
 var params = process.argv.slice(2);
+//Switch Case - Evaluates command and runs the appropriate function
 switch (params[0]) {
   case "my-tweets":
-    twitterMe();
+    twitterMe(); //Shows tweets from my alias Twitter profile...
     break;
   case "spotify-this-song":
     if (params[1]) {
-      spotifyMe()
+      spotifyMe() //If command is followed by a song...
     } else {
-      params[1] = "Meditate";
+      params[1] = "Meditate"; //If not, Meditate by EARTHGANG will show up
       spotifyMe();
     }
     break;
   case "movie-this":
-    if (params[1]) {
+    if (params[1]) { //If command is followed by a movie...
       movieInfo();
     } else {
-      params[1] = "Mr. Nobody";
+      params[1] = "Mr. Nobody"; //If not, Mr. Nobody will pop up
       movieInfo();
     }
     break;
-  case "do-what-it-says":
+  case "do-what-it-says": //Reads random.txt file and runs 
     itSays();
 
 };
@@ -36,10 +36,10 @@ switch (params[0]) {
 // console.log(keys);
 
 function twitterMe() {
-  var client = new Twitter(keys.twitterKeys);
+  var client = new Twitter(keys.twitterKeys); //Grabs the Twitter key
   var screen = {
     screen_name: 'power_max302'
-  };
+  }; //This grabs the user timeline. Up to 20 posts
   client.get('/statuses/user_timeline/', screen, function (error, tweets, response) {
     if (error) throw error;
     for (var i = 0; i < tweets.length; i++) {
@@ -48,7 +48,7 @@ function twitterMe() {
   });
 };
 
-
+//Spotify Function. Grabs song information (artist, song, album, preview link). Defaults to Meditate (Earthgang) if no song is entered.
 function spotifyMe() {
   var spotify = new Spotify(keys.spotifyKeys);
 
@@ -69,7 +69,7 @@ function spotifyMe() {
     }
   });
 };
-
+//Function that grabs movie info. If no movie selected defaults to Mr. Nobody...
 function movieInfo() {
 
   request("http://www.omdbapi.com/?t=" + params[1] + "&y=&plot=short&apikey=40e9cece", function (error, response, body) {
@@ -86,7 +86,7 @@ function movieInfo() {
     }
   });
 };
-
+//Function that reads the random.txt document. After reading it executes the command within the document.
 function itSays() {
   fs.readFile("random.txt", "utf8", function (err, data) {
     if (err) {
@@ -101,4 +101,4 @@ function itSays() {
     spotifyMe();
   });
 
-}
+};
