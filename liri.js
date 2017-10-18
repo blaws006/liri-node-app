@@ -7,6 +7,7 @@ var keys = require("./keys.js");
 
 //Global variable
 var params = process.argv.slice(2);
+var paramName = process.argv.slice(3).join("+");
 //Switch Case - Evaluates command and runs the appropriate function
 switch (params[0]) {
   case "my-tweets":
@@ -23,8 +24,8 @@ switch (params[0]) {
   case "movie-this":
     if (params[1]) { //If command is followed by a movie...
       movieInfo();
-    } else {
-      params[1] = "Mr. Nobody"; //If not, Mr. Nobody will pop up
+    } else { //If not, Mr. Nobody will pop up
+      params[1] = "Mr. Nobody"; 
       movieInfo();
     }
     break;
@@ -32,7 +33,6 @@ switch (params[0]) {
     itSays();
 
 };
-
 // console.log(keys);
 
 function twitterMe() {
@@ -48,13 +48,13 @@ function twitterMe() {
   });
 };
 
+
 //Spotify Function. Grabs song information (artist, song, album, preview link). Defaults to Meditate (Earthgang) if no song is entered.
 function spotifyMe() {
   var spotify = new Spotify(keys.spotifyKeys);
-
   spotify.search({
     type: "track",
-    query: params[1]
+    query: paramName
   }, function (err, data) {
     if (err) {
       console.log(err);
@@ -72,7 +72,7 @@ function spotifyMe() {
 //Function that grabs movie info. If no movie selected defaults to Mr. Nobody...
 function movieInfo() {
 
-  request("http://www.omdbapi.com/?t=" + params[1] + "&y=&plot=short&apikey=40e9cece", function (error, response, body) {
+  request("http://www.omdbapi.com/?t=" + paramName + "&y=&plot=short&apikey=40e9cece", function (error, response, body) {
 
     // If the request is successful (i.e. if the response status code is 200)
     if (!error && response.statusCode === 200) {
@@ -102,3 +102,4 @@ function itSays() {
   });
 
 };
+
