@@ -83,6 +83,8 @@ function movieInfo() {
       for (var i = 0; i < movieResult.length; i++) {
         console.log(movieResult[i]);
       }
+    } else {
+      throw(error);
     }
   });
 };
