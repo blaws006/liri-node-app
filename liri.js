@@ -17,7 +17,7 @@ switch (params[0]) {
     if (params[1]) {
       spotifyMe() //If command is followed by a song...
     } else {
-      params[1] = "Meditate"; //If not, Meditate by EARTHGANG will show up
+      paramName = "Meditate"; //If not, Meditate by EARTHGANG will show up
       spotifyMe();
     }
     break;
@@ -25,7 +25,7 @@ switch (params[0]) {
     if (params[1]) { //If command is followed by a movie...
       movieInfo();
     } else { //If not, Mr. Nobody will pop up
-      params[1] = "Mr. Nobody"; 
+      paramName = "Mr. Nobody";
       movieInfo();
     }
     break;
