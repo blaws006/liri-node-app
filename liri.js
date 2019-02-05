@@ -33,7 +33,6 @@ switch (params[0]) {
     itSays();
 
 };
-// console.log(keys);
 
 function twitterMe() {
   var client = new Twitter(keys.twitterKeys); //Grabs the Twitter key
@@ -57,7 +56,7 @@ function spotifyMe() {
     query: paramName
   }, function (err, data) {
     if (err) {
-      console.log(err);
+      console.log('Artist could not be found');
       return;
     } else {
       var songInfo = data.tracks.items[0];
@@ -84,7 +83,7 @@ function movieInfo() {
         console.log(movieResult[i]);
       }
     } else {
-      throw(error);
+      throw (error);
     }
   });
 };
@@ -104,4 +103,3 @@ function itSays() {
   });
 
 };
-
