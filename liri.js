@@ -6,6 +6,7 @@ var fs = require("fs");
 var keys = require("./keys.js");
 
 //Global variable
+// Let's implement yargs and simplify this switch case scenario
 var params = process.argv.slice(2);
 var paramName = process.argv.slice(3).join("+");
 //Switch Case - Evaluates command and runs the appropriate function
@@ -49,6 +50,7 @@ function twitterMe() {
 
 
 //Spotify Function. Grabs song information (artist, song, album, preview link). Defaults to Meditate (Earthgang) if no song is entered.
+// Let's create a cleaner scenario for the error Handling.
 function spotifyMe() {
   var spotify = new Spotify(keys.spotifyKeys);
   spotify.search({
@@ -70,7 +72,6 @@ function spotifyMe() {
 };
 //Function that grabs movie info. If no movie selected defaults to Mr. Nobody...
 function movieInfo() {
-
   request("http://www.omdbapi.com/?t=" + paramName + "&y=&plot=short&apikey=40e9cece", function (error, response, body) {
 
     // If the request is successful (i.e. if the response status code is 200)
@@ -94,7 +95,6 @@ function itSays() {
       console.log(err);
     }
     var dataArr = data.split(",");
-
     for (var i = 0; i < dataArr.length; i++) {
       params[1] = dataArr[1];
 
